@@ -1,0 +1,52 @@
+RPNEVAL:(C$)
+LOCAL NC$(1),I%,T$(1),BF$(1),BL$(1),F$(1),L$(1)
+
+NC$=C$
+I%=1
+IF C$ = "."
+    WHILE I% <= LEN(B$)
+        T$=MID$(B$,I%,1)
+        IF T$="." OR T$="E"
+            NC$=""
+            BREAK
+        ENDIF
+        I%=I%+1
+    ENDWH
+ELSEIF C$ = "E"
+    WHILE I% <= LEN(B$)
+        T$=MID$(B$,I%,1)
+        IF T$="E"
+            NC$=""
+            BREAK
+        ENDIF
+        I%=I%+1
+    ENDWH
+ENDIF
+
+B$=B$+NC$
+
+REM 1<-E->0
+REM 0<-.
+
+IF LEN(B$)=0
+    RETURN 0
+ENDIF
+
+F$=""
+L$=""
+BF$=LEFT$(B$,1)
+BL$=RIGHT$(B$,1)
+
+IF BF$="."
+    F$="0"
+ELSEIF BF$="E"
+    F$="1"
+ENDIF
+
+B$=F$+B$
+
+IF BL$="E"
+    L$="0"
+ENDIF
+
+RETURN VAL(B$+L$)

@@ -1,0 +1,16 @@
+RPNDISP:
+LOCAL BL%
+
+BL%=LEN(B$)
+
+CLS
+
+PRINT "T:",T
+PRINT "Z:",Z
+PRINT "Y:",Y
+
+IF BL% > 0
+    PRINT "X:",B$;"_"
+ELSE
+    PRINT "X:",X
+ENDIF

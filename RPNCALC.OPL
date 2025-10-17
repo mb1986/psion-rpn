@@ -1,0 +1,83 @@
+RPNCALC:
+GLOBAL X,Y,Z,T,B$(25),NL%
+LOCAL CODES$(255,1)
+LOCAL K%,T$(1)
+
+KSTAT 1
+
+X=0
+Y=0
+Z=0
+T=0
+B$=""
+NL%=0
+
+CODES$(49)="1"
+CODES$(50)="2"
+CODES$(51)="3"
+CODES$(52)="4"
+CODES$(53)="5"
+CODES$(54)="6"
+CODES$(55)="7"
+CODES$(56)="8"
+CODES$(57)="9"
+CODES$(48)="0"
+CODES$(46)="."
+
+CODES$(85)="1"
+CODES$(86)="2"
+CODES$(87)="3"
+CODES$(79)="4"
+CODES$(80)="5"
+CODES$(81)="6"
+CODES$(73)="7"
+CODES$(74)="8"
+CODES$(75)="9"
+CODES$(89)="0"
+CODES$(90)="."
+
+CODES$(69)="E"
+CODES$(101)="E"
+
+WHILE 1
+    RPNDISP:
+
+    K% = GET
+
+    IF K% = 1 REM EXIT
+        BREAK
+    ELSEIF K% = 8 REM DELETE
+        IF LEN(B$) > 0
+            B$=LEFT$(B$,LEN(B$)-1)
+            X=RPNEVAL:("")
+        ELSE
+            X=0
+        ENDIF
+    ELSEIF K% = 13 REM ENTER
+        B$=""
+        RPNOPER:("ENT")
+    ELSEIF K% = 43 OR K% = 88 REM +
+        B$=""
+        RPNOPER:("+")
+    ELSEIF K% = 45 OR K% = 82 REM -
+        B$=""
+        RPNOPER:("-")
+    ELSEIF K% = 42 OR K% = 76 REM *
+        B$=""
+        RPNOPER:("*")
+    ELSEIF K% = 47 OR K% = 70 REM /
+        B$=""
+        RPNOPER:("/")
+    ELSEIF K% = 37 REM %
+        B$=""
+        RPNOPER:("%")
+    ELSE REM NUMBER
+        T$ = CODES$(K%)
+        IF LEN(T$) > 0
+            IF NL% = 1 AND LEN(B$) = 0
+                RPNOPER:("ENT")
+            ENDIF
+            X=RPNEVAL:(T$)
+        ENDIF
+    ENDIF
+ENDWH

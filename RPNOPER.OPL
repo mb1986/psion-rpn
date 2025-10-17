@@ -1,0 +1,33 @@
+RPNOPER:(OP$)
+
+IF OP$ = "ENT"
+    T=Z
+    Z=Y
+    Y=X
+    NL%=0
+ELSEIF OP$ = "+"
+    X=Y+X
+    Y=Z
+    Z=T
+    NL%=1
+ELSEIF OP$ = "-"
+    X=Y-X
+    Y=Z
+    Z=T
+    NL%=1
+ELSEIF OP$ = "*"
+    X=Y*X
+    Y=Z
+    Z=T
+    NL%=1
+ELSEIF OP$ = "/"
+    X=Y/X
+    Y=Z
+    Z=T
+    NL%=1
+ELSEIF OP$ = "%"
+    X=Y*X/100
+    Y=Z
+    Z=T
+    NL%=1
+ENDIF
