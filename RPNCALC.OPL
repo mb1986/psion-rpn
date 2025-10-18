@@ -47,9 +47,6 @@ WHILE 1
     IF K% = 1 REM EXIT
         BREAK
     ELSEIF K% = 8 REM DELETE
-        REM IF LEN(B$) = 1
-        REM    B$=""
-        REM    X=0
         IF LEN(B$) > 0
             B$=LEFT$(B$,LEN(B$)-1)
         ELSE
