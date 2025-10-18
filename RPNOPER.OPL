@@ -27,7 +27,5 @@ ELSEIF OP$ = "/"
     NL%=1
 ELSEIF OP$ = "%"
     X=Y*X/100
-    Y=Z
-    Z=T
     NL%=1
 ENDIF
