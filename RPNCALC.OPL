@@ -64,10 +64,16 @@ WHILE 1
         X=RPNXVAL:
         B$=""
         RPNOPER:("+")
-    ELSEIF K% = 45 OR K% = 82 REM -
+    ELSEIF K% = 82 REM -
         X=RPNXVAL:
         B$=""
         RPNOPER:("-")
+    ELSEIF K% = 45 REM UNARY -
+        IF LEN(B$)=0
+            RPNOPER:("U-")
+        ELSE
+            RPNBUFF:("-")
+        ENDIF
     ELSEIF K% = 42 OR K% = 76 REM *
         X=RPNXVAL:
         B$=""

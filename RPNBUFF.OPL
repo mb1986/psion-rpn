@@ -21,6 +21,14 @@ ELSEIF C$ = "E"
         ENDIF
         I%=I%+1
     ENDWH
+ELSEIF C$ = "-"
+    BF$=LEFT$(B$,1)
+    IF BF$="-"
+        B$=RIGHT$(B$,LEN(B$)-1)
+    ELSE
+        B$="-"+B$
+    ENDIF
+    RETURN
 ENDIF
 
 IF NC$="E" AND LEN(B$)>0

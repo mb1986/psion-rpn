@@ -6,6 +6,8 @@ REM 0<-.
 
 IF LEN(B$)=0
     RETURN X
+ELSEIF B$="-"
+    RETURN 0
 ENDIF
 
 L$=""
