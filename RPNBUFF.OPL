@@ -23,6 +23,13 @@ ELSEIF C$ = "E"
     ENDWH
 ENDIF
 
+IF NC$="E" AND LEN(B$)>0
+    IF VAL(B$)=0
+        B$="1E"
+        RETURN
+    ENDIF
+ENDIF
+
 B$=B$+NC$
 
 REM 1<-E->0
