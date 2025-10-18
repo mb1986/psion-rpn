@@ -1,0 +1,18 @@
+RPNXVAL:
+LOCAL BL$(1),L$(1)
+
+REM 1<-E->0
+REM 0<-.
+
+IF LEN(B$)=0
+    RETURN X
+ENDIF
+
+L$=""
+BL$=RIGHT$(B$,1)
+
+IF BL$="E"
+    L$="0"
+ENDIF
+
+RETURN VAL(B$+L$)

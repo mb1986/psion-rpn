@@ -47,37 +47,48 @@ WHILE 1
     IF K% = 1 REM EXIT
         BREAK
     ELSEIF K% = 8 REM DELETE
+        REM IF LEN(B$) = 1
+        REM    B$=""
+        REM    X=0
         IF LEN(B$) > 0
             B$=LEFT$(B$,LEN(B$)-1)
-            X=RPNEVAL:("")
         ELSE
             X=0
+            NL%=0
         ENDIF
     ELSEIF K% = 13 REM ENTER
+        X=RPNXVAL:
         B$=""
         RPNOPER:("ENT")
     ELSEIF K% = 43 OR K% = 88 REM +
+        X=RPNXVAL:
         B$=""
         RPNOPER:("+")
     ELSEIF K% = 45 OR K% = 82 REM -
+        X=RPNXVAL:
         B$=""
         RPNOPER:("-")
     ELSEIF K% = 42 OR K% = 76 REM *
+        X=RPNXVAL:
         B$=""
         RPNOPER:("*")
     ELSEIF K% = 47 OR K% = 70 REM /
+        X=RPNXVAL:
         B$=""
         RPNOPER:("/")
     ELSEIF K% = 37 REM %
+        X=RPNXVAL:
         B$=""
         RPNOPER:("%")
     ELSE REM NUMBER
         T$ = CODES$(K%)
         IF LEN(T$) > 0
             IF NL% = 1 AND LEN(B$) = 0
+                X=RPNXVAL:
                 RPNOPER:("ENT")
+                X=0
             ENDIF
-            X=RPNEVAL:(T$)
+            RPNBUFF:(T$)
         ENDIF
     ENDIF
 ENDWH

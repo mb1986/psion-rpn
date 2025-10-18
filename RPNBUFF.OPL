@@ -1,5 +1,5 @@
-RPNEVAL:(C$)
-LOCAL NC$(1),I%,T$(1),BF$(1),BL$(1),F$(1),L$(1)
+RPNBUFF:(C$)
+LOCAL NC$(1),I%,T$(1),BF$(1)
 
 NC$=C$
 I%=1
@@ -28,25 +28,13 @@ B$=B$+NC$
 REM 1<-E->0
 REM 0<-.
 
-IF LEN(B$)=0
-    RETURN 0
-ENDIF
-
-F$=""
-L$=""
+T$=""
 BF$=LEFT$(B$,1)
-BL$=RIGHT$(B$,1)
 
 IF BF$="."
-    F$="0"
+    T$="0"
 ELSEIF BF$="E"
-    F$="1"
+    T$="1"
 ENDIF
 
-B$=F$+B$
-
-IF BL$="E"
-    L$="0"
-ENDIF
-
-RETURN VAL(B$+L$)
+B$=T$+B$
