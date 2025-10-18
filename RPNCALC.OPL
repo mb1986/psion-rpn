@@ -47,10 +47,11 @@ WHILE 1
     IF K% = 1 REM EXIT
         BREAK
     ELSEIF K% = 8 REM DELETE
-        IF LEN(B$) > 0
+        IF LEN(B$) > 1
             B$=LEFT$(B$,LEN(B$)-1)
         ELSE
             X=0
+            B$=""
             NL%=0
         ENDIF
     ELSEIF K% = 13 REM ENTER
