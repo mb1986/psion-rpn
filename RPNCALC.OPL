@@ -80,6 +80,14 @@ WHILE 1
         X=RPNXVAL:
         B$=""
         RPNOPER:("%")
+    ELSEIF K% = 3 REM X >< Y
+        X=RPNXVAL:
+        B$=""
+        RPNOPER:("XY")
+    ELSEIF K% = 4 REM Rv
+        X=RPNXVAL:
+        B$=""
+        RPNOPER:("Rv")
     ELSE REM NUMBER
         T$ = CODES$(K%)
         IF LEN(T$) > 0

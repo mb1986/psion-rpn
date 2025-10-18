@@ -1,4 +1,5 @@
 RPNOPER:(OP$)
+LOCAL TMP
 
 IF OP$ = "ENT"
     T=Z
@@ -27,5 +28,17 @@ ELSEIF OP$ = "/"
     NL%=1
 ELSEIF OP$ = "%"
     X=Y*X/100
+    NL%=1
+ELSEIF OP$ = "XY"
+    TMP=X
+    X=Y
+    Y=TMP
+    NL%=1
+ELSEIF OP$ = "Rv"
+    TMP=X
+    X=Y
+    Y=Z
+    Z=T
+    T=TMP
     NL%=1
 ENDIF
